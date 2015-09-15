@@ -1,0 +1,46 @@
+<div id="config_panel">
+
+  <label for="url">目标：</label>
+  <select id="url">
+    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/ElectiveCourse.aspx">选课</option>
+    <option value="http://cms.rdfz.cn/Elective/MyElective/MyElective.aspx">查看结果</option>
+    <option value="/test" selected="selected">test</option>
+  </select>
+
+  <label for="wincount">窗口数：</label>
+  <input id="wincount" type="number" min="1" max="10" value="1">
+
+  <button onclick="start()">开始</button>
+
+  <br /> <br />
+
+  <input id="timeout" type="checkbox" checked="checked">
+  <label for="timeout">超时：</label>
+  <input id="timeoutvalue" type="number" min="1" max="180" value="90">
+  <label for="timeoutvalue">秒</label>
+
+  <br />
+
+  <input id="blockshort" type="checkbox" checked="checked">
+  <label for="blockshort">内容过短时自动刷新：</label>
+  <input id="blockshortvalue" type="number" min="1" max="10240" value="1024">
+  <label for="blockshortvalue">字节</label>
+
+  <br />
+
+  <input id="blockurl" type="checkbox" checked="checked">
+  <label for="blockurl">非法URL提示时自动刷新</label>
+</div>
+
+<br /> <br />
+
+<table border="1" style="width: 100%">
+  <thead>
+    <tr>
+      <th style="width: 20%">窗口ID</th>
+      <th style="width: 50%">状态</th>
+      <th style="width: 30%">操作</th>
+    </tr>
+  </thead>
+  <tbody id="output"></tbody>
+</table>
