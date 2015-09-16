@@ -1,5 +1,3 @@
-// https://github.com/xmcp/xkmod
-
 if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
   document.write('Please run the script in "cms.rdfz.cn" domain');
   throw 1;
