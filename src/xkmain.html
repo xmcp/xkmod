@@ -3,7 +3,7 @@
   .willshow {display: none;}
   small {color: gray; font-size: .7em;}
   body {margin-top: 20px; background-color: #eee;}
-  p {margin-top: .7em; margin-left: 200px;}
+  p {margin-top: .7em; margin-left: 100px;}
   button.bigbtn {height: 35px; width: 75px;}
 
   table {width: 100%;}
@@ -12,7 +12,7 @@
   table>tbody>tr>td {padding: 8px; line-height: 1.4; vertical-align: top; border-bottom: 1px solid #ddd;}
 </style>
 
-<p class="willfade" style="font-size: 1.5em;">
+<p class="willfade" style="font-size: 1.3em;">
   <label for="url">目标：</label>
   <select id="url">
     <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/SelectDirection.aspx">选课 (SelectDirection)</option>
@@ -23,9 +23,9 @@
     <!--<option value="/test" selected="selected">test</option>-->
   </select>
   &nbsp;
-  <label for="wincount">多标签抢课：</label>
+  <label for="wincount">标签：</label>
   <input id="wincount" type="number" min="1" max="10" value="1">
-  <small>(1-10)</small>
+  个<small>(1-10)</small>
   &nbsp;
   <button onclick="start()" class="bigbtn">开始</button>
 </p>

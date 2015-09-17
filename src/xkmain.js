@@ -34,6 +34,7 @@ function open_window(url,winid,use_win) {
   function open_new_win(url,winid) {
     var tmp=document.createElement('a');
     tmp.target=winid;
+    tmp.href='about:blank';
     tmp.click(); // open window in tab instead of new window
     return window.open(url,winid); // get the handler of opened window
   }
@@ -212,5 +213,8 @@ function killall() {
 }
 
 function refresh(winid) {
-  reload(subwins[winid],winid,'用户刷新');
+  if(subwins[winid])
+    reload(subwins[winid],winid,'用户刷新');
+  else
+    alert('标签已离线');
 }

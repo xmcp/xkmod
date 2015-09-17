@@ -2,6 +2,9 @@
 import base64
 import slimit
 
+import os, sys
+os.chdir(os.path.split(sys.argv[0])[0])
+
 print('-- 1/4 Compressing xkmain.html')
 with open('../src/xkmain.html','r',encoding='utf-8') as f:
     main_content='\n'.join((x.lstrip() for x in f.read().split('\n'))).replace('\n\n','\n')

@@ -3,6 +3,9 @@ import cherrypy
 import random
 import time
 
+import os, sys
+os.chdir(os.path.split(sys.argv[0])[0])
+
 class Website:
     @cherrypy.expose()
     def mod(self,_):
