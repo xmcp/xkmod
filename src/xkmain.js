@@ -9,9 +9,13 @@ processing={};
 result={};
 refresh_count={};
 
-URL_PATTERN='请不要使用'+'非法';
+URL_PATTERN={
+  '请不要使用非法': true,
+  'Server Error in': true,
+  '服务器错误': true
+};
 LOADING='L0ad1ng...xkm0d'+(+new Date())+'9323214785';
-reload_timeout=250;
+RELOAD_TIMEOUT=200;
 
 output=$('#output');
 waiting_timeout=null;
@@ -19,7 +23,11 @@ blockshort=null;
 blockurl=false;
 
 function new_refresh(winid) {
-  refresh_count[winid].text(parseInt(refresh_count[winid].text())+1);
+  refresh_count[winid]
+    .text(parseInt(refresh_count[winid].text())+1)
+    .animate({paddingLeft: '18px'},75,'swing',function() {
+      $(this).animate({paddingLeft: '8px'},75,'swing');
+    });
 }
 
 function open_window(url,winid,use_win) {
@@ -68,25 +76,35 @@ function closesub(winid) {
 
 function reload(win,winid,reason) {
   clog(winid,reason+'（正重新载入）');
+  new_refresh(winid);
+  processing[winid]=true;
   setTimeout(function() {
     if(!subwins[winid])
       return;
     win=open_window(url,winid);
-    new_refresh(winid);
+    inspected[winid]=false;
+    processing[winid]=false;
     if(waiting_timeout)
       waiter[winid]=setTimeout(function(){reload(win,winid,'加载超时');},waiting_timeout);
-  },reload_timeout);
+  },RELOAD_TIMEOUT);
 }
 
 function inspect(win,winid) {
+  function checkurl(txt) {
+    for(var content in URL_PATTERN)
+      if(URL_PATTERN.hasOwnProperty(content))
+        if(txt.indexOf(content)!==-1)
+          return true;
+    return false;
+  }
   clog(winid,'加载完成');
   var txt=win.document.body.innerHTML;
   if(blockshort && txt.length===0)
     reload(win,winid,'内容为空');
   else if(blockshort && txt.length<1000)
     reload(win,winid,'内容过短');
-  else if(blockurl && txt.indexOf(URL_PATTERN)!==-1)
-    reload(win,winid,'非法URL提醒');
+  else if(blockurl && checkurl(txt))
+    reload(win,winid,'服务器错误');
   else {
     win.addEventListener('beforeunload', function() {
       win.document.body.innerHTML='<!--'+LOADING+'-->';
@@ -131,6 +149,11 @@ function parsepage() {
       window.waiting_timeout*=1000;
   } else {
     window.waiting_timeout=null;
+    for(var id in waiter)
+      if(waiter.hasOwnProperty(id)) {
+        clearInterval(waiter[id]);
+        waiter[id]=null;
+      }
   }
   if(document.getElementById('blockshort').checked) {
     window.blockshort=parseInt($('#blockshortvalue').val());
@@ -152,7 +175,6 @@ function start() {
   }
   parsepage();
   window.url=$('#url').val();
-  $('#output_container').show();
   for(var _=0;_<wins;_++) {
     output.append(
       '<tr>'+
@@ -160,7 +182,8 @@ function start() {
         '<td id="refresh_count_'+current_winid+'">0</td>'+
         '<td id="result_'+current_winid+'">未上线</td>'+
         '<td>'+
-          '<button onclick="locate('+current_winid+')">定位</button>'+
+          '<button onclick="locate('+current_winid+')">定位</button>&nbsp;'+
+          '<button onclick="refresh('+current_winid+')">刷新</button>&nbsp;'+
           '<button onclick="closesub('+current_winid+')">下线</button>'+
       '</td>'+
       '</tr>'
@@ -172,11 +195,13 @@ function start() {
       if(waiting_timeout)
         waiter[winid]=setTimeout(function(){reload(win,winid,'加载超时');},waiting_timeout);
       })(newwin,current_winid);
-        subwins[current_winid++]=newwin;
+    subwins[current_winid++]=newwin;
     }
+  alert('成功打开 '+wins+' 个标签页 用来加载\n'+url);
+  $('.willfade').slideUp(500,function() {
+    $('.willshow').slideDown(500);
+  });
   setInterval(checker,250);
-  $('.willfade').remove();
-  $('.willshow').show();
 }
 
 function killall() {
@@ -184,4 +209,8 @@ function killall() {
     if(subwins.hasOwnProperty(id))
       closesub(id);
   }
+}
+
+function refresh(winid) {
+  reload(subwins[winid],winid,'用户刷新');
 }

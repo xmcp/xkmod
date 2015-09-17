@@ -1,5 +1,5 @@
 if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
-  document.write('Please run the script in "cms.rdfz.cn" domain');
+  document.write('Error: Please run the script in "cms.rdfz.cn" domain');
   throw 1;
 }
 
@@ -11,7 +11,7 @@ if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
 
   var nw=window.open('/test'); //check popup blocker
   if(nw===undefined) {
-    document.write('Please allow the pop-up');
+    document.write('Error: Please allow the pop-up window and then refresh the page');
     throw 1;
   } else { //well done
     nw.close();
