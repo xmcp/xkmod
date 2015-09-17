@@ -43,7 +43,7 @@ function open_window(url,winid,use_win) {
       open_new_win('about:blank',win_name[winid] || (win_name[winid]='xkm0d_W1ND0W_'+winid+'_'+Math.random()));
   try {
     win.document.write('<!--' + LOADING + '-->');
-  } catch(e) { //cross-domain, probably http error
+  } catch(e) { //cross-domain, probably tcp error
     setTimeout(function() {
       processing[winid]=true;
       open_window(url,winid,win);
@@ -125,8 +125,8 @@ function checker() {
     }
     try {
       var still_loading = !win.document.body || win.document.body.innerHTML.indexOf(LOADING)!=-1
-    } catch(e) { //cross-domain or http error
-      reload(win,winid,'HTTP错误');
+    } catch(e) { //cross-domain or tcp error
+      reload(win,winid,'TCP错误');
       continue;
     }
     if(still_loading) {
