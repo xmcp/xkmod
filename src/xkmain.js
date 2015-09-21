@@ -15,7 +15,7 @@ URL_PATTERN={
   '服务器错误': true
 };
 LOADING='L0ad1ng...xkm0d'+(+new Date())+'9323214785';
-RELOAD_TIMEOUT=200;
+RELOAD_TIMEOUT=250;
 
 output=$('#output');
 waiting_timeout=null;
@@ -25,8 +25,8 @@ blockurl=false;
 function new_refresh(winid) {
   refresh_count[winid]
     .text(parseInt(refresh_count[winid].text())+1)
-    .animate({paddingLeft: '18px'},75,'swing',function() {
-      $(this).animate({paddingLeft: '8px'},75,'swing');
+    .animate({paddingLeft: '18px'},85,function() {
+      $(this).animate({paddingLeft: '8px'},85);
     });
 }
 

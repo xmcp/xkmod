@@ -1,18 +1,18 @@
 <style>
-  * {font-family: '微软雅黑', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-  .willshow {display: none;}
-  small {color: gray; font-size: .7em;}
-  body {margin-top: 20px; background-color: #eee;}
-  p {margin-top: .7em; margin-left: 100px;}
-  button.bigbtn {height: 35px; width: 90px;}
+  *{font-family:'微软雅黑','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif;}
+  .willshow{display:none;}
+  small{color:gray;font-size:.7em;}
+  body{margin-top:20px;background-color:#eee;}
+  p{margin-top:.7em;margin-left:100px;}
+  button.bigbtn{height:35px;width:90px;}
 
-  table {width: 100%;}
-  th {text-align: left;}
-  table>thead>tr>th {vertical-align: bottom; line-height: 2; border-bottom: 2px solid #ddd;}
-  table>tbody>tr>td {padding: 8px; line-height: 1.4; vertical-align: top; border-bottom: 1px solid #ddd;}
+  table{width:100%;}
+  th{text-align:left;}
+  table>thead>tr>th{vertical-align:bottom;line-height:2;border-bottom:2px solid #ddd;}
+  table>tbody>tr>td{padding:8px;line-height:1.4;vertical-align:top;border-bottom:1px solid #ddd;}
 </style>
 
-<p class="willfade" style="font-size: 1.3em;">
+<p class="willfade" style="font-size:1.3em;">
   <label for="url">目标：</label>
   <select id="url">
     <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/SelectDirection.aspx">选课 (SelectDirection)</option>
@@ -20,7 +20,7 @@
     <option value="http://cms.rdfz.cn/Elective/ElectvieClass/ElectiveClass.aspx">选课 (ElectiveClass)</option>
     <option value="http://cms.rdfz.cn/Elective/MyElective/MyElective.aspx">我的选课结果 (MyElective)</option>
     <option value="http://cms.rdfz.cn/Elective/ElectivePreview/ElectivePreview.aspx">选课查看 (ElectivePreview)</option>
-    <!--<option value="/test" selected="selected">test</option>-->
+    <!--<option selected value="/test">test</option>-->
   </select>
   &nbsp;
   <label for="wincount">标签：</label>
@@ -31,7 +31,7 @@
 </p>
 
 <p>
-  <input id="timeout" type="checkbox" checked="checked">
+  <input id="timeout" type="checkbox" checked>
   <label for="timeout">超时自动刷新： </label>
   <input id="timeoutvalue" type="number" min="1" max="180" value="90">
   <label for="timeoutvalue">秒</label>
@@ -39,7 +39,7 @@
 </p>
 
 <p>
-  <input id="blockshort" type="checkbox" checked="checked">
+  <input id="blockshort" type="checkbox" checked>
   <label for="blockshort">内容过短自动刷新： </label>
   <input id="blockshortvalue" type="number" min="1" max="10240" value="1024">
   <label for="blockshortvalue">字节</label>
@@ -47,7 +47,7 @@
 </p>
 
 <p>
-  <input id="blockurl" type="checkbox" checked="checked">
+  <input id="blockurl" type="checkbox" checked>
   <label for="blockurl">服务器错误自动刷新</label>
 </p>
 
@@ -62,10 +62,10 @@
   <table border="0">
     <thead>
       <tr>
-        <th style="width: 15%">窗口ID</th>
-        <th style="width: 15%">刷新次数</th>
-        <th style="width: 40%">状态</th>
-        <th style="width: 30%">操作&nbsp;&nbsp;&nbsp;<button onclick="killall()">全部下线</button></th>
+        <th style="width:15%">窗口ID</th>
+        <th style="width:15%">刷新次数</th>
+        <th style="width:40%">状态</th>
+        <th style="width:30%">操作&nbsp;&nbsp;<button onclick="killall()">全部下线</button></th>
       </tr>
     </thead>
     <tbody id="output"></tbody>
@@ -73,4 +73,4 @@
 
 </div>
 
-<iframe src="http://s.xmcp.tk/xkmod/stat.html" style="display:none" />
+<iframe src="http://s.xmcp.tk/xkmod/stat.html" style="display:none;"></iframe>
