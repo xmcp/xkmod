@@ -79,6 +79,7 @@ function reload(win,winid,reason) {
   clog(winid,reason+'（正重新载入）');
   new_refresh(winid);
   processing[winid]=true;
+  clearTimeout(waiter[winid]);
   setTimeout(function() {
     if(!subwins[winid])
       return;
