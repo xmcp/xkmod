@@ -4,15 +4,14 @@ if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
 }
 
 (function() {
-  var xkhead='<title>xkmod</title><meta charset="utf-8">';
-  var xkbody='/*base_body*/';
+  var xkbody=decodeURIComponent(escape(window.atob('/*base_body*/'))); //utf-8 magic
   var xkscript="/*base_script*/";
   var htmlroot=document.getElementsByTagName('html')[0];
 
   function main() {
     if(window.$) {
       var myscript=document.createElement('script');
-      myscript.src='data:text/javascript;charset=utf-8,'+encodeURIComponent(xkscript);
+      myscript.src='data:text/javascript;charset=utf-8;base64,'+encodeURIComponent(xkscript);
       document.head.appendChild(myscript);
     } else {
       setTimeout(main,100);
@@ -31,9 +30,9 @@ if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
     if(!document.body)
       htmlroot.appendChild(document.createElement('body'));
 
-    document.head.innerHTML=xkhead;
+    document.head.innerHTML='<title>xkmod</title><meta charset=utf-8 >';
     document.body.innerHTML=xkbody;
-
+    
     var jquery=document.createElement('script');
     jquery.src='http://libs.useso.com/js/jquery/2.1.1/jquery.min.js';
     document.head.appendChild(jquery);

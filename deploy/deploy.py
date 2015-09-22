@@ -15,8 +15,8 @@ with open('../src/xkmain.js','r',encoding='utf-8') as f:
 
 print('-- 3/4 Connecting xkboot.js')
 with open('../src/xkboot.js','r',encoding='utf-8') as f:
-    boot_content=f.read().replace('/*base_body*/',main_content.replace('\\','\\\\').replace("'","\\'"))\
-        .replace('/*base_script*/',main_script.replace('\n','').replace('\\','\\\\').replace('"','\\"'))
+    boot_content=f.read().replace('/*base_body*/',base64.b64encode(main_content.encode('utf-8')).decode())\
+                         .replace('/*base_script*/',base64.b64encode(main_script.encode('utf-8')).decode())
 
 print('-- 4/4 Compressing xkboot.js')
 with open('xkboot.min.js','w') as f:
