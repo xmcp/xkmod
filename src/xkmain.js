@@ -224,5 +224,4 @@ $('#startbtn').on('click',start);
 $('#parsepagebtn').on('click',parsepage);
 $('#killallbtn').on('click',killall);
 $('#deleteme').remove();
-
 })();

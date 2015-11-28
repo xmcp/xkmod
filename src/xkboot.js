@@ -9,7 +9,7 @@ if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
   var htmlroot=document.getElementsByTagName('html')[0];
 
   function main() {
-    if(window.$) {
+    if(window.$ && $(document).on) {
       var myscript=document.createElement('script');
       myscript.src='data:text/javascript;charset=utf-8;base64,'+encodeURIComponent(xkscript);
       document.head.appendChild(myscript);
