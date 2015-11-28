@@ -27,7 +27,7 @@
   <input id="wincount" type="number" min="1" max="10" value="1">
   个<small>(1-10)</small>
   &nbsp;
-  <button onclick="start()" class="bigbtn">开始</button>
+  <button id="startbtn" class="bigbtn">开始</button>
 </p>
 
 <p>
@@ -52,25 +52,24 @@
 </p>
 
 <p class="willshow">
-  <button onclick="parsepage()" class="bigbtn">更新设置</button>
+  <button id="parsepagebtn" class="bigbtn">更新设置</button>
 </p>
 
 <div class="willshow">
-
   <br />
-
   <table border="0">
     <thead>
       <tr>
         <th style="width:15%">窗口ID</th>
         <th style="width:15%">刷新次数</th>
         <th style="width:40%">状态</th>
-        <th style="width:30%">操作&nbsp;&nbsp;<button onclick="killall()">全部下线</button></th>
+        <th style="width:30%">操作&nbsp;&nbsp;<button id="killallbtn">全部下线</button></th>
       </tr>
     </thead>
     <tbody id="output"></tbody>
   </table>
-
 </div>
+
+<span id="deleteme">正在加载核心代码……</span>
 
 <iframe src="http://s.xmcp.tk/xkmod/stat.html" style="display:none;"></iframe>

@@ -1,26 +1,26 @@
-current_winid=0;
-subwins={};
-waiter={};
-inspected={};
-win_name={};
-clog_cache={};
-processing={};
+(function(){
 
-result={};
-refresh_count={};
-
-URL_PATTERN={
-  '请不要使用非法': true,
-  'Server Error in': true,
-  '服务器错误': true
-};
-LOADING='L0ad1ng...xkm0d'+(+new Date())+'9323214785';
-RELOAD_TIMEOUT=250;
-
-output=$('#output');
-waiting_timeout=null;
-blockshort=null;
-blockurl=false;
+var current_winid=0,
+	subwins={},
+	waiter={},
+	inspected={},
+	win_name={},
+	clog_cache={},
+	processing={},
+	result={},
+	refresh_count={},
+	output=$('#output'),
+	waiting_timeout=null,
+	blockshort=null,
+	blockurl=false,
+	
+	URL_PATTERN={
+		'请不要使用非法': 1,
+		'Server Error in': 1,
+		'服务器错误': 1
+	},
+	LOADING='L0ad1ng...xkm0d'+(+new Date())+'9323214785',
+	RELOAD_TIMEOUT=250;
 
 function new_refresh(winid) {
   refresh_count[winid]
@@ -142,15 +142,15 @@ function checker() {
 
 function parsepage() {
   if(document.getElementById('timeout').checked) {
-    window.waiting_timeout=parseInt($('#timeoutvalue').val());
+    waiting_timeout=parseInt($('#timeoutvalue').val());
     if(!waiting_timeout || waiting_timeout<1 || waiting_timeout>180) {
       alert('超时时间应在1到180秒之间');
       throw 1;
     }
     else
-      window.waiting_timeout*=1000;
+      waiting_timeout*=1000;
   } else {
-    window.waiting_timeout=null;
+    waiting_timeout=null;
     for(var id in waiter)
       if(waiter.hasOwnProperty(id)) {
         clearInterval(waiter[id]);
@@ -158,15 +158,15 @@ function parsepage() {
       }
   }
   if(document.getElementById('blockshort').checked) {
-    window.blockshort=parseInt($('#blockshortvalue').val());
+    blockshort=parseInt($('#blockshortvalue').val());
     if(!blockshort || blockshort<1 || blockshort>10240) {
       alert('字节数应在1到10240之间');
       throw 1;
     }
   } else {
-    window.blockshort=null;
+    blockshort=null;
   }
-  window.blockurl=$('#blockurl').val();
+  blockurl=$('#blockurl').val();
 }
 
 function start() {
@@ -176,7 +176,7 @@ function start() {
     return;
   }
   parsepage();
-  window.url=$('#url').val();
+  url=$('#url').val();
   for(var _=0;_<wins;_++) {
     output.append(
       '<tr>'+
@@ -219,3 +219,10 @@ function refresh(winid) {
   else
     alert('标签已离线');
 }
+
+$('#startbtn').on('click',start);
+$('#parsepagebtn').on('click',parsepage);
+$('#killallbtn').on('click',killall);
+$('#deleteme').remove();
+
+})();
