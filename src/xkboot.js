@@ -1,12 +1,10 @@
-if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
-  document.write('Please run the script in "cms.rdfz.cn" domain');
-  throw 1;
-}
-
 (function() {
-  var xkbody=decodeURIComponent(escape(window.atob('/*base_body*/'))); //utf-8 magic
-  var xkscript="/*base_script*/";
-  var htmlroot=document.getElementsByTagName('html')[0];
+  if(['127.0.0.1','cms.rdfz.cn','cms2.rdfz.cn'].indexOf(document.domain)===-1) 
+    return document.write('Please run the script in cms.rdfz.cn domain');
+
+  var xkbody=decodeURIComponent(escape(window.atob('/*base_body*/'))), //utf-8 magic
+    xkscript="/*base_script*/",
+    htmlroot=document.getElementsByTagName('html')[0];
 
   function main() {
     if(window.$ && $(document).on) {
@@ -19,10 +17,9 @@ if(document.domain!=='127.0.0.1' && document.domain!=='cms.rdfz.cn') {
   }
 
   var nw=window.open('/test'); //check popup blocker
-  if(!nw) {
-    document.write('Please disable pop-up blocker and refresh');
-    throw 1;
-  } else { //well done
+  if(!nw)
+    return document.write('Please disable pop-up blocker and then refresh');
+  else { //well done
     nw.close();
 
     if(!document.head)

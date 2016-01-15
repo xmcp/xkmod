@@ -15,17 +15,18 @@
 <p class="willfade" style="font-size:1.3em;">
   <label for="url">目标：</label>
   <select id="url">
-    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/SelectDirection.aspx">选课 (SelectDirection)</option>
-    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/ElectiveCourse.aspx">选课 (ElectiveCourse)</option>
-    <option value="http://cms.rdfz.cn/Elective/ElectvieClass/ElectiveClass.aspx">选课 (ElectiveClass)</option>
-    <option value="http://cms.rdfz.cn/Elective/MyElective/MyElective.aspx">我的选课结果 (MyElective)</option>
-    <option value="http://cms.rdfz.cn/Elective/ElectivePreview/ElectivePreview.aspx">选课查看 (ElectivePreview)</option>
+    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/SelectDirection.aspx" selected>SelectDirection ←选我就对了</option>
+    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/ElectiveCourse.aspx">ElectiveCourse</option>
+    <option value="http://cms.rdfz.cn/Elective/ElectvieClass/ElectiveClass.aspx">ElectiveClass</option>
+    <option value="http://cms.rdfz.cn/Elective/MyElective/MyElective.aspx">MyElective (我的选课结果)</option>
+    <option value="http://cms.rdfz.cn/Elective/ElectivePreview/ElectivePreview.aspx">ElectivePreview (选课查看)</option>
+    <option value="http://cms2.rdfz.cn/EItest/Elective/ElectiveCourse/SelectDirection.aspx">SelectDirection eitest</option>
     <!--<option selected value="/test">test</option>-->
   </select>
   &nbsp;
-  <label for="wincount">标签：</label>
-  <input id="wincount" type="number" min="1" max="10" value="1">
-  个<small>(1-10)</small>
+  <label for="wincount">并行抢课：</label>
+  <input id="wincount" type="number" min="1" max="10" value="5">
+  <small>(1-10)</small>
   &nbsp;
   <button id="startbtn" class="bigbtn">开始</button>
 </p>

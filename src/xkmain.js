@@ -67,6 +67,7 @@ function locate(winid) {
   else
     alert('标签已离线');
 }
+window._l=locate;
 
 function closesub(winid) {
   clearTimeout(waiter[winid]);
@@ -74,6 +75,7 @@ function closesub(winid) {
   subwins[winid]=undefined;
   clog(winid,'已离线');
 }
+window._c=closesub;
 
 function reload(win,winid,reason) {
   clog(winid,reason+'（正重新载入）');
@@ -184,9 +186,9 @@ function start() {
         '<td id="refresh_count_'+current_winid+'">0</td>'+
         '<td id="result_'+current_winid+'">未上线</td>'+
         '<td>'+
-          '<button onclick="locate('+current_winid+')">定位</button>&nbsp;'+
-          '<button onclick="refresh('+current_winid+')">刷新</button>&nbsp;'+
-          '<button onclick="closesub('+current_winid+')">下线</button>'+
+          '<button onclick="_l('+current_winid+')">定位</button>&nbsp;'+
+          '<button onclick="_r('+current_winid+')">刷新</button>&nbsp;'+
+          '<button onclick="_c('+current_winid+')">下线</button>'+
       '</td>'+
       '</tr>'
     ); //todo: change to createElement
@@ -219,6 +221,7 @@ function refresh(winid) {
   else
     alert('标签已离线');
 }
+window._r=refresh;
 
 $('#startbtn').on('click',start);
 $('#parsepagebtn').on('click',parsepage);
