@@ -3,7 +3,7 @@
   .willshow{display:none;}
   small{color:gray;font-size:.7em;}
   body{margin-top:20px;background-color:#eee;}
-  p{margin-top:.7em;margin-left:100px;}
+  p,li{margin-top:.7em;margin-left:100px;}
   button.bigbtn{height:35px;width:90px;}
 
   table{width:100%;}
@@ -15,18 +15,16 @@
 <p class="willfade" style="font-size:1.3em;">
   <label for="url">目标：</label>
   <select id="url">
-    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/SelectDirection.aspx" selected>SelectDirection ←选我就对了</option>
-    <option value="http://cms.rdfz.cn/Elective/ElectiveCourse/ElectiveCourse.aspx">ElectiveCourse</option>
-    <option value="http://cms.rdfz.cn/Elective/ElectvieClass/ElectiveClass.aspx">ElectiveClass</option>
-    <option value="http://cms.rdfz.cn/Elective/MyElective/MyElective.aspx">MyElective (我的选课结果)</option>
-    <option value="http://cms.rdfz.cn/Elective/ElectivePreview/ElectivePreview.aspx">ElectivePreview (选课查看)</option>
-    <option value="http://cms2.rdfz.cn/EItest/Elective/ElectiveCourse/SelectDirection.aspx">SelectDirection eitest</option>
-    <!--<option selected value="/test">test</option>-->
+    <option value="/Elective/ElectiveCourse/SelectDirection.aspx" selected>SelectDirection</option>
+    <option value="/Elective/ElectiveCourse/ElectiveCourse.aspx">ElectiveCourse</option>
+    <option value="/Elective/ElectvieClass/ElectiveClass.aspx">ElectiveClass</option>
+    <option value="/Elective/MyElective/MyElective.aspx">MyElective (我的选课结果)</option>
+    <option value="/Elective/ElectivePreview/ElectivePreview.aspx">ElectivePreview (选课查看)</option>
   </select>
   &nbsp;
   <label for="wincount">并行抢课：</label>
-  <input id="wincount" type="number" min="1" max="10" value="5">
-  <small>(1-10)</small>
+  <input id="wincount" type="number" min="1" max="5" value="3">
+  <small>(1-5)</small>
   &nbsp;
   <button id="startbtn" class="bigbtn">开始</button>
 </p>
@@ -34,9 +32,9 @@
 <p>
   <input id="timeout" type="checkbox" checked>
   <label for="timeout">超时自动刷新： </label>
-  <input id="timeoutvalue" type="number" min="1" max="180" value="90">
+  <input id="timeoutvalue" type="number" min="60" max="300" value="180">
   <label for="timeoutvalue">秒</label>
-  <small>(1-180)</small>
+  <small>(60-300)</small>
 </p>
 
 <p>
@@ -56,6 +54,16 @@
   <button id="parsepagebtn" class="bigbtn">更新设置</button>
 </p>
 
+<div class="willfade" style="margin-left: 2em">
+  <br>
+  <p><b>作者提醒：</b></p>
+  <p>研究表明，CMS 系统会对 Session 进行加锁，受此影响：</p>
+  <li>多标签抢课对选课速度的提升微乎其微，反而可能影响电脑性能；</li>
+  <li>过短的重试超时会大幅降低你自己的选课速度。</li>
+  <p>为了能够更快选上课，请不要随意调节设置，除非你很清楚你在干什么。</p>
+  <p><a href="https://github.com/xmcp/xkmod" target="_blank">xkmod by @xmcp</a> 本软件按照现状提供，使用 xkmod 产生的一切后果请自行承担。继续使用将视为您同意这一点。</p>
+</div>
+
 <div class="willshow">
   <br />
   <table border="0">
@@ -73,4 +81,4 @@
 
 <span id="deleteme">正在加载核心代码……</span>
 
-<iframe src="http://s.xmcp.tk/xkmod/stat.html" style="display:none;"></iframe>
+<iframe src="http://s.xmcp.ml/xkmod/stat.html" style="display:none;"></iframe>

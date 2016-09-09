@@ -145,8 +145,8 @@ function checker() {
 function parsepage() {
   if(document.getElementById('timeout').checked) {
     waiting_timeout=parseInt($('#timeoutvalue').val());
-    if(!waiting_timeout || waiting_timeout<1 || waiting_timeout>180) {
-      alert('超时时间应在1到180秒之间');
+    if(!waiting_timeout || waiting_timeout<60 || waiting_timeout>300) {
+      alert('超时时间应在60到300秒之间');
       throw 1;
     }
     else
@@ -173,12 +173,14 @@ function parsepage() {
 
 function start() {
   var wins=parseInt($('#wincount').val());
-  if(!wins || wins>10 || wins<1) {
-    alert('标签数量应在1到10之间');
+  if(!wins || wins>5 || wins<1) {
+    alert('标签数量应在1到5之间');
     return;
   }
   parsepage();
   url=$('#url').val();
+  if(document.domain==='cms2.rdfz.cn')
+      url='/eitest'+url;
   for(var _=0;_<wins;_++) {
     output.append(
       '<tr>'+

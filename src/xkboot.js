@@ -1,5 +1,5 @@
 (function() {
-  if(['127.0.0.1','cms.rdfz.cn','cms2.rdfz.cn'].indexOf(document.domain)===-1) 
+  if(['cms.rdfz.cn','cms2.rdfz.cn'].indexOf(document.domain)===-1) 
     return document.write('Please run the script in cms.rdfz.cn domain');
 
   var xkbody=decodeURIComponent(escape(window.atob('/*base_body*/'))), //utf-8 magic
@@ -21,7 +21,8 @@
     return document.write('Please disable pop-up blocker and then refresh');
   else { //well done
     nw.close();
-
+    document.close();
+    
     if(!document.head)
       htmlroot.appendChild(document.createElement('head'));
     if(!document.body)
